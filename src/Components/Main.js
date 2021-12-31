@@ -1,6 +1,10 @@
+import { useState } from "react";
+
 import Die from "./Die";
 
 function Main() {
+  const [dice, setDice] = useState(allNewDice);
+
   function allNewDice() {
     const diceSet = [];
     while (diceSet.length <= 9) {
@@ -8,21 +12,15 @@ function Main() {
     }
     return diceSet;
   }
+
+  const diceElements = dice.map((dieNumber) => {
+    return <Die value={dieNumber} />;
+  });
+
   return (
     <main className="main__container">
       <div className="main__game-board">
-        <div className="dice">
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-        </div>
+        <div className="dice">{diceElements}</div>
       </div>
     </main>
   );
