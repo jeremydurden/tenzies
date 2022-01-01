@@ -70,7 +70,7 @@ function Main() {
 
   return (
     <main className="main__container">
-      {tenzies && <Confetti />}
+      {tenzies && <Confetti width={100} height={100} />}
       <div className="main__game-board">
         <h1 className="title">Tenzies</h1>
         {tenzies ? (
