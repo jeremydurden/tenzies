@@ -35,6 +35,10 @@ body {
   align-items: center;
 }
 
+.main__game-board h2 {
+  font-size: 15rem;
+}
+
 .title {
   font-size: 30rem;
   margin: 0;
