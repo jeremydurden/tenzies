@@ -8,13 +8,18 @@ function Main() {
   function allNewDice() {
     const diceSet = [];
     while (diceSet.length <= 9) {
-      diceSet.push(Math.floor(Math.random() * (7 - 1) + 1));
+      const randomNumber = Math.floor(Math.random() * (7 - 1) + 1);
+      diceSet.push({
+        value: randomNumber,
+        isHeld: false,
+      });
     }
     return diceSet;
   }
 
-  const diceElements = dice.map((dieNumber) => {
-    return <Die value={dieNumber} />;
+  const diceElements = dice.map((die) => {
+    console.log(die.value, "value");
+    return <Die key={dice.index} value={die.value} />;
   });
 
   function roll() {
