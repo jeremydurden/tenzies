@@ -17,10 +17,17 @@ function Main() {
     return <Die value={dieNumber} />;
   });
 
+  function roll() {
+    setDice(allNewDice);
+  }
+
   return (
     <main className="main__container">
       <div className="main__game-board">
         <div className="dice">{diceElements}</div>
+        <button className="rollButton" onClick={roll}>
+          Roll
+        </button>
       </div>
     </main>
   );
