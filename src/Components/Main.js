@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Confetti from "react-confetti";
 
 import Die from "./Die";
 
@@ -8,7 +9,13 @@ function Main() {
   const [tenzies, setTenzies] = useState(false);
 
   useEffect(() => {
-    console.log("dice state changed");
+    const heldTrue = dice.every((die) => die.isHeld);
+    const value = dice[0].value;
+    const matching = dice.every((die) => die.value === value);
+    if (heldTrue && matching) {
+      setTenzies(true);
+      console.log("you win!");
+    }
   }, [dice]);
 
   function generateNewDie() {
@@ -27,12 +34,19 @@ function Main() {
     return diceSet;
   }
 
+  function reset() {
+    setTenzies(false);
+    setDice(allNewDice);
+  }
+
   function roll() {
-    setDice((prevState) =>
-      prevState.map((die) => {
-        return die.isHeld ? die : generateNewDie();
-      })
-    );
+    tenzies
+      ? reset()
+      : setDice((prevState) =>
+          prevState.map((die) => {
+            return die.isHeld ? die : generateNewDie();
+          })
+        );
   }
 
   function hold(id) {
@@ -56,6 +70,7 @@ function Main() {
 
   return (
     <main className="main__container">
+      {tenzies && <Confetti />}
       <div className="main__game-board">
         <h1 className="title">Tenzies</h1>
         <p className="instructions">
@@ -64,7 +79,7 @@ function Main() {
         </p>
         <div className="dice">{diceElements}</div>
         <button className="rollButton" onClick={roll}>
-          Roll
+          {tenzies ? "New Game" : "Roll"}
         </button>
       </div>
     </main>
