@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 import Die from "./Die";
 
@@ -8,12 +7,14 @@ function Main() {
 
   function allNewDice() {
     const diceSet = [];
+    let num = -1;
     while (diceSet.length <= 9) {
+      num++;
       const randomNumber = Math.floor(Math.random() * (7 - 1) + 1);
       diceSet.push({
         value: randomNumber,
-        isHeld: false,
-        id: uuidv4(),
+        isHeld: true,
+        id: num,
       });
     }
     return diceSet;
@@ -23,19 +24,19 @@ function Main() {
     setDice(allNewDice);
   }
 
-  function hold(id) {
-    setDice((prevState) =>
-      prevState.map((die) => {
-        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
-      })
-    );
-  }
+  //   function hold(id) {
+  //     setDice((prevState) => {
+  //       return prevState.map((die) => {
+  //         return die.id === 0 ? { ...die, isHeld: !die.isHeld } : die;
+  //       });
+  //     });
+  //   }
 
   const diceElements = dice.map((die) => {
     return (
       <Die
-        hold={() => hold(die.id)}
-        key={die.id}
+        // hold={() => hold(die.id)}
+        key={dice.index}
         value={die.value}
         isHeld={die.isHeld}
       />

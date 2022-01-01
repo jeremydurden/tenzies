@@ -1,6 +1,7 @@
-function Die({ value }) {
+function Die({ value, isHeld, hold }) {
+  const styles = { background: isHeld ? "rgba(89, 227, 145, 1)" : "white" };
   return (
-    <div className="die">
+    <div onClick={hold} style={styles} className="die">
       <h2>{value}</h2>
     </div>
   );
