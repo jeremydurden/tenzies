@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import Die from "./Die";
 
 function Main() {
   const [dice, setDice] = useState(allNewDice);
+  const [tenzies, setTenzies] = useState(false);
+
+  useEffect(() => {
+    console.log("dice state changed");
+  }, [dice]);
 
   function generateNewDie() {
     return {
