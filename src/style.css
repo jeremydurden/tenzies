@@ -31,8 +31,22 @@ body {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.title {
+  font-size: 30rem;
+  margin: 0;
+}
+
+.instructions {
+  font-family: "Inter", sans-serif;
+
+  font-size: 8rem;
+  font-weight: 400;
+  margin-top: 0;
+  text-align: center;
 }
 
 .dice {
@@ -44,7 +58,6 @@ body {
   width: 80%;
   height: 21vh;
   text-align: center;
-  margin-top: auto;
 }
 
 .die {
@@ -74,8 +87,7 @@ body {
   background: #5035ff;
   color: #ffffff;
   padding: 3rem 8rem;
-  margin-bottom: 50rem;
-  margin-top: 10rem;
+  margin-bottom: 10rem;
   cursor: pointer;
   border-radius: 1.6rem;
   box-shadow: 0rem 0.3rem 0.3rem rgba(0, 0, 0, 0.7);
